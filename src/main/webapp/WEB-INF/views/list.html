@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        video{
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <h1>Video</h1>
+    <a href="/upload">Upload</a>
+<table border="10" cellpadding="20" cellspacing="10">
+    <tr>
+        <th>STT</th>
+        <th>Video</th>
+        <th>Title</th>
+        <th colspan="2">Action</th>
+    </tr>
+    <tr th:each="v,loop:${list}">
+        <td th:text="${loop.count}"></td>
+        <td>
+            <video th:src="@{|/video/${v.videoUrl}|}" controls></video></td>
+        <td th:text="${v.title}"></td>
+        <td th:text="${v.description}"></td>
+        <td><a th:href="@{|/delete/${v.id}|}" onclick="return confirm('Are you sure?')">delete</a></td>
+        <td><a th:href="@{|/edit/${v.id}|}" >Edit</a></td>
+    </tr>
+</table>
+</body>
+</html>

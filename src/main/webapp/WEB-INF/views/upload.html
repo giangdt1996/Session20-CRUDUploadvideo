@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block>
+  <form th:action="@{/upload}" th:object="${video}" method="post" enctype="multipart/form-data">
+    <input type="file" th:field="*{videoUrl}">
+    <input type="text" placeholder="Title" th:field="*{title}">
+    <textarea placeholder="......" th:field="*{description}"></textarea>
+    <input type="submit" value="Add">
+  </form>
+</th:block>
+</body>
+</html>
